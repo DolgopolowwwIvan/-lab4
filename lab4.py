@@ -18,9 +18,6 @@ def main():
     статей расходов, предлагаемых для сокращения.
     """)
 
-    # Добавляем поле для имени
-    name = st.text_input("Введите ваше ФИО:")
-
     # Определяем варианты (статьи расходов для возможного сокращения)
     options = [
         'Увеличение заработной платы городской администрации',
@@ -59,27 +56,16 @@ def main():
             option_a = options[i]
             option_b = options[j]
 
-            st.markdown(f'### Сравнение: **Статья {i + 1}** vs **Статья {j + 1}**')
-
-            # Отображаем сравниваемые статьи более четко
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                st.markdown(f"**Статья {i + 1}:**")
-                st.write(f"**{option_a}**")
-                
-            with col2:
-                st.markdown(f"**Статья {j + 1}:**")
-                st.write(f"**{option_b}**")
+            st.markdown(f'### Сравнение: Статья {i + 1} vs Статья {j + 1}')
 
             # Создаем два столбца для распределения баллов
             col_a, col_b = st.columns(2)
 
             with col_a:
-                st.markdown(f"**Баллы для Статьи {i + 1}**")
-                st.caption("(более предпочтительная для сокращения)")
+                st.markdown(f"**Статья {i + 1}:**")
+                st.write(f"{option_a}")
                 score_a = st.slider(
-                    f"Баллы для статьи {i + 1}",
+                    f"Баллы для Статьи {i + 1}",
                     min_value=0,
                     max_value=12,
                     value=6,
@@ -87,10 +73,10 @@ def main():
                 )
 
             with col_b:
-                st.markdown(f"**Баллы для Статьи {j + 1}**")
-                st.caption("(более предпочтительная для сокращения)")
+                st.markdown(f"**Статья {j + 1}:**")
+                st.write(f"{option_b}")
                 score_b = st.slider(
-                    f"Баллы для статьи {j + 1}",
+                    f"Баллы для Статьи {j + 1}",
                     min_value=0,
                     max_value=12,
                     value=6,
